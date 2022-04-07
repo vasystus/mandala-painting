@@ -20,19 +20,18 @@ function init() {
 //draw the pointer path. It only runs if draw = true.
 function drawLine() {
     let a = prevX;
-    let b = prevY;
-    let c = currX;
-    let d = currY;
+        b = prevY;
+        c = currX;
+        d = currY;
 
     context.lineWidth = 4;
     context.lineCap = "round";
-
+    
     context.beginPath();
     context.moveTo(a, b);
     context.lineTo(c, d);
     context.stroke();
     context.closePath();
-
 }
 
 // used by init when the pointer is not down (onpointerup) or is out of bounds (onpointerout).
@@ -50,9 +49,14 @@ function recordPointerLocation(e) {
 
 //if draw = true, calls recordPointerLocation to get the path and drawLine to draw it.
 function handlePointerMove(e) {
-    if(draw) {
+    if (draw) {
         recordPointerLocation(e);
         drawLine();
     }
 }
 
+//runs when the pointer is down (finger is on touchscreen or mouse is clicked)
+function handlePointerDown(e) {
+    recordPointerLocation(e);
+    draw = true;
+}
