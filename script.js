@@ -41,9 +41,18 @@ function stopDrawing() {
 }
 
 //tracks the pointer’s location and stores its coordinates
-function recordPointerLocation() {
+function recordPointerLocation(e) {
     prevX = currX;
     prevY = currY;
     currX = e.clientX - canvas.offsetLeft;
     currY = e.clientY - canvas.offsetTop;
 }
+
+//if draw = true, calls recordPointerLocation to get the path and drawLine to draw it.
+function handlePointerMove(e) {
+    if(draw) {
+        recordPointerLocation(e);
+        drawLine();
+    }
+}
+
