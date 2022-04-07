@@ -16,3 +16,34 @@ function init() {
     canvas.onpointerup = stopDrawing;
     canvas.onpointerout = stopDrawing;
 }
+
+//draw the pointer path. It only runs if draw = true.
+function drawLine() {
+    let a = prevX;
+    let b = prevY;
+    let c = currX;
+    let d = currY;
+
+    context.lineWidth = 4;
+    context.lineCap = "round";
+
+    context.beginPath();
+    context.moveTo(a, b);
+    context.lineTo(c, d);
+    context.stroke();
+    context.closePath();
+
+}
+
+// used by init when the pointer is not down (onpointerup) or is out of bounds (onpointerout).
+function stopDrawing() {
+    draw = false;
+}
+
+//tracks the pointer’s location and stores its coordinates
+function recordPointerLocation() {
+    prevX = currX;
+    prevY = currY;
+    currX = e.clientX - canvas.offsetLeft;
+    currY = e.clientY - canvas.offsetTop;
+}
