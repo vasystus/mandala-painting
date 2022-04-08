@@ -15,6 +15,7 @@ function init() {
     canvas.onpointerdown = handlePointerDown;
     canvas.onpointerup = stopDrawing;
     canvas.onpointerout = stopDrawing;
+    document.querySelector(".clear").onclick = clearCanvas;
 }
 
 //draw the pointer path. It only runs if draw = true.
@@ -23,7 +24,8 @@ function drawLine() {
         b = prevY;
         c = currX;
         d = currY;
-
+    
+    context.strokeStyle = getColor();
     context.lineWidth = 4;
     context.lineCap = "round";
     
@@ -60,3 +62,16 @@ function handlePointerDown(e) {
     recordPointerLocation(e);
     draw = true;
 }
+
+//Part two - CLEAR button and color pallette
+function getColor() {
+    return document.querySelector(".color").value;
+} 
+
+//The first two arguments (0,0) mark the origin, which is actually the top left corner of the canvas. The other two (w,h) mark the full width and height of the canvas. This means the entire canvas will be erased, from the top left corner to the bottom right corner.
+function clearCanvas() {
+    if (confirm("Want to clear?")) {
+        context.clearRect(0, 0, w, h);
+    }
+}
+
