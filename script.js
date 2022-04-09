@@ -20,18 +20,32 @@ function init() {
 
 //draw the pointer path. It only runs if draw = true.
 function drawLine() {
-    let a = prevX;
-        b = prevY;
-        c = currX;
-        d = currY;
-    
+    let a = prevX, a_ = a,
+        b = prevY, b_ = h-b,
+        c = currX, c_ = c,
+        d = currY, d_ = h-d;
+       
     context.strokeStyle = getColor();
-    context.lineWidth = 4;
+    context.lineWidth = 5;
     context.lineCap = "round";
     
     context.beginPath();
+    //draw line 1
     context.moveTo(a, b);
     context.lineTo(c, d);
+    //mirror line 1
+    context.moveTo(a_, b_);
+    context.lineTo(c_, d_);
+    //reassign values and draw the 3rd line
+    a_ = w-a; b_ = b;
+    c_ = w-c; d_ = d;
+    context.moveTo(a_, b_);
+    context.lineTo(c_, d_);
+    //reassign values and draw the 4rth line
+    a_ = w-a; b_ = h-b;
+    c_ = w-c; d_ = h-d;
+    context.moveTo(a_,b_);
+    context.lineTo(c_,d_);
     context.stroke();
     context.closePath();
 }
@@ -74,4 +88,7 @@ function clearCanvas() {
         context.clearRect(0, 0, w, h);
     }
 }
+
+// Part 3 - draw with two lines(mirror coordinates)
+
 
