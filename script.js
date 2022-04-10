@@ -1,4 +1,4 @@
-//part 1 - app with six functions: init, drawLine, stopDrawing, recordPointerLocation, handlePointerMove, handlePointerDown
+//start - app with six functions: init, drawLine, stopDrawing, recordPointerLocation, handlePointerMove, handlePointerDown
 
 //canvas and context let us manipulate the canvas, 4 coordinates helps us to track location of the pointer. 
 let canvas, context, w, h, 
@@ -46,6 +46,16 @@ function drawLine() {
     c_ = w-c; d_ = h-d;
     context.moveTo(a_,b_);
     context.lineTo(c_,d_);
+    //reassign values and draw the 5th line
+    a_ = w/2 + h/2 - b; b_ = w/2 + w/2 - a;
+    c_ = w/2 + h/2 - d; d_ = w/2 + w/2 - c;
+    context.moveTo(a_,b_);
+    context.lineTo(c_,d_);
+    //reassign values and draw the 6th line
+    a_ = w/2 + h/2 - b; b_ = w/2 - w/2 + a;
+    c_ = w/2 + h/2 - d; d_ = w/2 - w/2 + c;
+    context.moveTo(a_,b_);
+    context.lineTo(c_,d_);
     context.stroke();
     context.closePath();
 }
@@ -89,6 +99,6 @@ function clearCanvas() {
     }
 }
 
-// Part 3 - draw with two lines(mirror coordinates)
+
 
 
