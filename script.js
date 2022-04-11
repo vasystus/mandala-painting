@@ -26,14 +26,14 @@ function drawLine() {
         d = currY, d_ = h-d;
        
     context.strokeStyle = getColor();
-    context.lineWidth = 5;
+    context.lineWidth = 4;
     context.lineCap = "round";
     
     context.beginPath();
     //draw line 1
     context.moveTo(a, b);
     context.lineTo(c, d);
-    //mirror line 1
+    //draw line 2 (mirrow line 1)
     context.moveTo(a_, b_);
     context.lineTo(c_, d_);
     //reassign values and draw the 3rd line
@@ -47,13 +47,23 @@ function drawLine() {
     context.moveTo(a_,b_);
     context.lineTo(c_,d_);
     //reassign values and draw the 5th line
-    a_ = w/2 + h/2 - b; b_ = w/2 + w/2 - a;
-    c_ = w/2 + h/2 - d; d_ = w/2 + w/2 - c;
+    a_ = w/2 + h/2 - b; b_ = w/2 + h/2 - a;
+    c_ = w/2 + h/2 - d; d_ = w/2 + h/2 - c;
     context.moveTo(a_,b_);
     context.lineTo(c_,d_);
     //reassign values and draw the 6th line
-    a_ = w/2 + h/2 - b; b_ = w/2 - w/2 + a;
-    c_ = w/2 + h/2 - d; d_ = w/2 - w/2 + c;
+    a_ = w/2 + h/2 - b; b_ = h/2 - w/2 + a;
+    c_ = w/2 + h/2 - d; d_ = h/2 - w/2 + c;
+    context.moveTo(a_,b_);
+    context.lineTo(c_,d_);
+    //reassing values and draw the 7th line
+    a_ = w/2 - h/2 + b; b_ = w/2 + h/2 - a;
+    c_ = w/2 - h/2 + d; d_ = w/2 + h/2 - c;
+    context.moveTo(a_,b_);
+    context.lineTo(c_,d_);
+    //reassign  values and draw the 8th line
+    a_ = w/2 - h/2 + b; b_ = h/2 - w/2 + a;
+    c_ = w/2 - h/2 + d; d_ = h/2 - w/2 + c;
     context.moveTo(a_,b_);
     context.lineTo(c_,d_);
     context.stroke();
@@ -99,6 +109,6 @@ function clearCanvas() {
     }
 }
 
-
+  
 
 
