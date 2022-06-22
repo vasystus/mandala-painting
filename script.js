@@ -104,7 +104,7 @@ function getColor() {
 
 //The first two arguments (0,0) mark the origin, which is actually the top left corner of the canvas. The other two (w,h) mark the full width and height of the canvas. This means the entire canvas will be erased, from the top left corner to the bottom right corner.
 function clearCanvas() {
-    if (confirm("Want to clear?")) {
+    if (confirm("Do you want to clear?")) {
         context.clearRect(0, 0, w, h);
     }
 }
